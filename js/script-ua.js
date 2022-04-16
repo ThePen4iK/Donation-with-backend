@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 let form = document.getElementById("form");
                 let formData = new FormData(form);
-                let result = 'Имя:' + formData.get('name') + '; Фамилия: ' + formData.get('sname') + '; Телефон: ' + formData.get('phone') + '; Почта: ' + formData.get('email') + '; Согласие на обработку данных: ' + (formData.get('checkbox') ? 'Да' : 'Нет');
+                let result = 'Имя:' + formData.get('name') + '; Фамилия: ' + formData.get('sname') + '; Телефон: ' + formData.get('phone') + '; Почта: ' + formData.get('email') + '; Текст: ' + formData.get('textarea') + '; Согласие на обработку данных: ' + (formData.get('checkbox') ? 'Да' : 'Нет');
                 console.log(result, "result")
                 const response = await fetch('php/sendemail.php', {
                     method: "POST",
@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
 
                 if(checkbox.checked ){
+                    popupContact.classList.remove("popup__show");
                     popupThanks.classList.add("popup__show");
                     overlay.classList.add("active-overlay");
                     rootElement.classList.add("block");

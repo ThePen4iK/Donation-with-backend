@@ -31,6 +31,7 @@ $mail->Body    = 'Name: ' . htmlspecialchars($_POST['name']) ;
 $mail->Body    .= '<br> Surname: ' . htmlspecialchars($_POST['sname']) ;
 $mail->Body    .= '<br> Telephone: ' . htmlspecialchars($_POST['phone']) ;
 $mail->Body    .= '<br> Email: '  . htmlspecialchars($_POST['email']) ;
+$mail->Body    .= '<br> Text: '  . htmlspecialchars($_POST['email']) ;
 $mail->Body    .= '<br> Agree: ' . htmlspecialchars($_POST['checkbox']);
 $mail->AltBody = 'This is a plain-text message body';
 
