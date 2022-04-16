@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let popup = document.querySelectorAll(".popup");
     let popupContact = document.querySelector(".js-popup-contact");
-    let contactBtn = document.querySelector(".js-contact");
+    let contactBtn = document.querySelectorAll(".js-contact");
     let overlay = document.querySelector(".overlay");
     let popupClose = document.querySelectorAll(".popup__close");
     let popupSend = document.querySelector(".popup__btn");
@@ -105,77 +105,80 @@ document.addEventListener("DOMContentLoaded", function () {
     let inputValue = document.querySelectorAll("._req");
 
 
-    contactBtn.addEventListener("click", () => {
-        popupContact.classList.add("popup__show");
-        overlay.classList.add("active-overlay");
-        rootElement.classList.add("block");
+    contactBtn.forEach((item)=>{
+        item.addEventListener("click", () => {
+
+            popupContact.classList.add("popup__show");
+            overlay.classList.add("active-overlay");
+            rootElement.classList.add("block");
 
 
-        popupSend.addEventListener("click", async function (e) {
-            e.preventDefault();
+            popupSend.addEventListener("click", async function (e) {
+                e.preventDefault();
 
-            let form = document.getElementById("form");
-            let formData = new FormData(form);
-            let result = 'Имя:' + formData.get('name') + '; Фамилия: ' + formData.get('sname') + '; Телефон: ' + formData.get('phone') + '; Почта: ' + formData.get('email') + '; Согласие на обработку данных: ' + (formData.get('checkbox') ? 'Да' : 'Нет');
-            console.log(result, "result")
-            const response = await fetch('php/sendemail.php', {
-                method: "POST",
-                body: formData
-            });
+                let form = document.getElementById("form");
+                let formData = new FormData(form);
+                let result = 'Имя:' + formData.get('name') + '; Фамилия: ' + formData.get('sname') + '; Телефон: ' + formData.get('phone') + '; Почта: ' + formData.get('email') + '; Согласие на обработку данных: ' + (formData.get('checkbox') ? 'Да' : 'Нет');
+                console.log(result, "result")
+                const response = await fetch('php/sendemail.php', {
+                    method: "POST",
+                    body: formData
+                });
 
-            inputValue.forEach((item)=>{
-                const formControl = item.parentElement;
-                if (item.value === '') {
-                    formControl.classList.add("error");
-                    popupSend.setAttribute("disabled", "true");
-                    setTimeout(function () {
-                        formControl.classList.remove("error");
+                inputValue.forEach((item)=>{
+                    const formControl = item.parentElement;
+                    if (item.value === '') {
+                        formControl.classList.add("error");
+                        popupSend.setAttribute("disabled", "true");
+                        setTimeout(function () {
+                            formControl.classList.remove("error");
 
-                    }, 2000);
-                }else{
-                    popupSend.removeAttribute("disabled");
-                }
-            })
-            // fieldInput.forEach((item, i) => {
-            //
-            // })
-
-            // fieldTextarea.forEach((elem) => {
-            //     const formControl = elem.parentElement;
-            //     if (elem.value.trim() === '') {
-            //         formControl.classList.add("error");
-            //         popupSend.disabled = true;
-            //         setTimeout(function () {
-            //             formControl.classList.remove("error");
-            //             popupSend.disabled = false;
-            //
-            //         }, 2000);
-            //     }
-            // })
-            if(checkbox.checked ){
-                popupThanks.classList.add("popup__show");
-                overlay.classList.add("active-overlay");
-                rootElement.classList.add("block");
-            }
-            if (popupThanks) {
-                btnThanks.addEventListener("click", () => {
-                    popup.forEach((item) => {
-                        item.classList.remove("popup__show");
-                        overlay.classList.remove("active-overlay");
-                        rootElement.classList.remove("block");
-                    })
-                    fieldInput.forEach((elem) => {
-                        elem.value = "";
-                    })
-                    fieldTextarea.forEach((elem) => {
-                        elem.value = "";
-
-                    })
+                        }, 2000);
+                    }else{
+                        popupSend.removeAttribute("disabled");
+                    }
                 })
-            }
+                // fieldInput.forEach((item, i) => {
+                //
+                // })
+
+                // fieldTextarea.forEach((elem) => {
+                //     const formControl = elem.parentElement;
+                //     if (elem.value.trim() === '') {
+                //         formControl.classList.add("error");
+                //         popupSend.disabled = true;
+                //         setTimeout(function () {
+                //             formControl.classList.remove("error");
+                //             popupSend.disabled = false;
+                //
+                //         }, 2000);
+                //     }
+                // })
+                if(checkbox.checked ){
+                    popupThanks.classList.add("popup__show");
+                    overlay.classList.add("active-overlay");
+                    rootElement.classList.add("block");
+                }
+                if (popupThanks) {
+                    btnThanks.addEventListener("click", () => {
+                        popup.forEach((item) => {
+                            item.classList.remove("popup__show");
+                            overlay.classList.remove("active-overlay");
+                            rootElement.classList.remove("block");
+                        })
+                        fieldInput.forEach((elem) => {
+                            elem.value = "";
+                        })
+                        fieldTextarea.forEach((elem) => {
+                            elem.value = "";
+
+                        })
+                    })
+                }
+
+            })
 
         })
-
     })
 
     btnCrypto.addEventListener("click", () => {
