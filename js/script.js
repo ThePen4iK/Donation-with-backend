@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const swiperGallery = new Swiper(".gallery__swiper", {
         slidesPerView: "auto",
         spaceBetween: 20,
-        loop: true,
         navigation: {
             nextEl: ".arrow__next",
             prevEl: ".arrow__prev",
