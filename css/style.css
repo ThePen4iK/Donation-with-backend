@@ -815,7 +815,20 @@ img {
   display: -ms-flexbox;
   display: flex;
 }
-
+.slider__navigation--team{
+  margin-top: 30px;
+}
+.slider__navigation--mod{
+  display: none;
+}
+@media(min-width: 768px){
+  .slider__navigation--team{
+    display: none;
+  }
+  .slider__navigation--mod{
+    display: flex;
+  }
+}
 .arrow__prev {
   margin-right: 16px;
   cursor: pointer;
