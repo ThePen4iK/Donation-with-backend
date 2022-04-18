@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let inputValue = document.querySelectorAll("._req");
 
 
-    contactBtn.forEach((item)=>{
+    contactBtn.forEach((item) => {
         item.addEventListener("click", () => {
 
             popupContact.classList.add("popup__show");
@@ -117,14 +117,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 let form = document.getElementById("form");
                 let formData = new FormData(form);
-                let result = 'Имя:' + formData.get('name') + '; Фамилия: ' + formData.get('sname') + '; Телефон: ' + formData.get('phone') + '; Почта: ' + formData.get('email') + '; Текст: ' + formData.get('textarea') + '; Согласие на обработку данных: ' + (formData.get('checkbox') ? 'Да' : 'Нет');
+                let result = 'Имя:' + formData.get('name') + '; Фамилия: ' + formData.get('sname') + '; Телефон: ' + formData.get('phone') + '; Почта: ' + formData.get('email') + '; Текст: ' + formData.get('textarea') + '; Согласие на обработку данных: ' + (formData.get('checkbox') ? 'Да' : 'Нет' ) + '; ЯзыкUA: ' + formData.get('form_title');
                 console.log(result, "result")
                 const response = await fetch('php/sendemail.php', {
                     method: "POST",
                     body: formData
                 });
 
-                inputValue.forEach((item)=>{
+                inputValue.forEach((item) => {
                     const formControl = item.parentElement;
                     if (item.value === '') {
                         formControl.classList.add("error");
@@ -133,12 +133,12 @@ document.addEventListener("DOMContentLoaded", function () {
                             formControl.classList.remove("error");
 
                         }, 2000);
-                    }else{
+                    } else {
                         popupSend.removeAttribute("disabled");
                     }
                 })
 
-                if(checkbox.checked ){
+                if (checkbox.checked) {
                     popupContact.classList.remove("popup__show");
                     popupThanks.classList.add("popup__show");
                     overlay.classList.add("active-overlay");

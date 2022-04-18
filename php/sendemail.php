@@ -24,10 +24,10 @@ $mail->Password = '112321364';
 
 $mail->setFrom('from@example.com', 'First Last');
 $mail->addReplyTo('replyto@example.com', 'First Last');
-$mail->addAddress('morozovprav@gmail.com', 'John Doe');
+$mail->addAddress('infoTeamVM@gmail.com', 'John Doe');
 
-$mail->Subject = 'PHPMailer GMail SMTP test';
-$mail->Body    = 'Name: ' . htmlspecialchars($_POST['name']) ;
+$mail->Subject = htmlspecialchars($_POST['form_title'] ?? 'not found');
+$mail->Body    = '<br>Name: ' . htmlspecialchars($_POST['name']) ;
 $mail->Body    .= '<br> Surname: ' . htmlspecialchars($_POST['sname']) ;
 $mail->Body    .= '<br> Telephone: ' . htmlspecialchars($_POST['phone']) ;
 $mail->Body    .= '<br> Email: '  . htmlspecialchars($_POST['email']) ;
@@ -35,7 +35,7 @@ $mail->Body    .= '<br> Text: '  . htmlspecialchars($_POST['email']) ;
 $mail->Body    .= '<br> Agree: ' . htmlspecialchars($_POST['checkbox']);
 $mail->AltBody = 'This is a plain-text message body';
 
-
+var_dump($mail->Subject);
 
 if (!$mail->send()) {
     $message = 'Mailer Error: ' . $mail->ErrorInfo;

@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 let form = document.getElementById("form");
                 let formData = new FormData(form);
-                let result = 'Имя:' + formData.get('name') + '; Фамилия: ' + formData.get('sname') + '; Телефон: ' + formData.get('phone') + '; Почта: ' + formData.get('email') + '; Текст: ' + formData.get('textarea') + '; Согласие на обработку данных: ' + (formData.get('checkbox') ? 'Да' : 'Нет');
+                let result = 'Имя:' + formData.get('name') + '; Фамилия: ' + formData.get('sname') + '; Телефон: ' + formData.get('phone') + '; Почта: ' + formData.get('email') + '; Текст: ' + formData.get('textarea') + '; Согласие на обработку данных: ' + (formData.get('checkbox') ? 'Да' : 'Нет') + '; ЯзыкEN: ' + formData.get('form_title');
                 console.log(result, "result")
                 const response = await fetch('php/sendemail.php', {
                     method: "POST",
