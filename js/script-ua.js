@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     })
 
-    const swiperTeam = new Swiper(".team__swiper--ua", {
+    const swiperTeam = new Swiper(".team__swiper", {
         slidesPerView: "auto",
         spaceBetween: 20,
         navigation: {
