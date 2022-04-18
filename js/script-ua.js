@@ -70,6 +70,15 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     })
 
+    const swiperTeam = new Swiper(".team__swiper--ua", {
+        slidesPerView: "auto",
+        spaceBetween: 20,
+        navigation: {
+            nextEl: ".arrow__next--team",
+            prevEl: ".arrow__prev--team",
+        },
+    })
+    console.log("ttest", swiperTeam);
     let galleryVideo = document.querySelectorAll(".gallery__wrap"),
         videoPlay = document.querySelectorAll(".gallery__slide-video"),
         galleryDecor = document.querySelectorAll(".gallery__decor");
