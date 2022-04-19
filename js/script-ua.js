@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let burger = document.querySelector(".hamburger"),
         header = document.querySelector(".header"),
-        menuitem = document.querySelectorAll(".menu__item"),
+        menuitem = document.querySelectorAll(".navigation__item"),
         headerBtn = document.querySelector(".btn__header"),
         menuFlag = false,
         startScreen = document.querySelector('.js-start'),
@@ -49,16 +49,18 @@ document.addEventListener("DOMContentLoaded", function () {
             burger.classList.remove("hamburger__active");
             menuFlag = false;
         });
+
+        menuitem.forEach((item) => {
+            item.addEventListener("click", () => {
+                rootElement.classList.remove("block");
+                header.classList.remove("header--open");
+                burger.classList.remove("hamburger__active");
+                menuFlag = false;
+            });
+        });
     }
     ;
-    menuitem.forEach((item) => {
-        item.addEventListener("click", () => {
-            rootElement.classList.remove("block");
-            header.classList.remove("header--open");
-            burger.classList.remove("hamburger__active");
-            menuFlag = false;
-        });
-    });
+
 
 
     const swiperGallery = new Swiper(".gallery__swiper", {
